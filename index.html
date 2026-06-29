@@ -1,125 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MetroMaid Valet Service</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      color: #333;
-    }
-
-    header {
-      background: #0f2d4a;
-      color: white;
-      padding: 25px;
-      text-align: center;
-    }
-
-    .hero {
-      background: white;
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 22px;
-      background: #0f2d4a;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .services {
-      max-width: 1000px;
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0f2d4a;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroMaid | Premium Apartment Valet Trash Service DFW</title>
+    <meta name="description" content="Reliable, premium doorstep valet trash collection and property maintenance for apartment communities in Dallas, Plano, Frisco, and surrounding DFW areas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-  <h2>MetroMaid Valet Service</h2>
-  <p>Doorstep Trash Valet for Apartments, Condos & Townhomes</p>
-</header>
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-text">Metro<span class="accent">Maid</span></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
 
-<div class="hero">
-  <h1>Reliable Trash Valet Service in DFW</h1>
-  <p>We help apartment communities stay clean, modern, and convenient with professional doorstep trash collection.</p>
-  <section id="quote" style="background:#f4f4f4; padding:30px; margin-top:40px;">
-  <h2>Request a Quote</h2>
+    <section id="home" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">#1 Valet Trash in DFW</span>
+                <h1>Luxury Apartment Valet Trash Service You Can Count On</h1>
+                <p>Reliable doorstep trash collection for apartment communities throughout the Dallas–Fort Worth Metroplex. Increase NOI, boost resident satisfaction, and keep your property immaculate.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Request a Free Quote <i class="fas fa-arrow-right"></i></a>
+                    <a href="tel:19728915109" class="btn btn-secondary"><i class="fas fa-phone"></i> Call 972-891-5109</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image-overlay"></div>
+                <svg viewBox="0 0 500 500" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0B5ED7;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="200" fill="url(#grad1)" opacity="0.1"/>
+                    <rect x="120" y="150" width="100" height="250" rx="10" fill="#1E3A8A" opacity="0.8"/>
+                    <rect x="240" y="100" width="140" height="300" rx="15" fill="#0B5ED7"/>
+                    <circle cx="310" cy="180" r="25" fill="#22C55E"/>
+                    <path d="M150 220 H190 M150 260 H190 M280 240 H340 M280 290 H340" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
 
-  <form action="https://formspree.io/f/mojolaae" method="POST">
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proudly Serving North Texas</h2>
+                <p>We partner with property managers to deliver flawless amenities that keep retention rates high.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-building"></i></div>
+                    <h3>Property Value</h3>
+                    <p>Clean communities naturally attract long-term premium tenants and increase overall property asset value.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-star"></i></div>
+                    <h3>5-Star Resident Amenity</h3>
+                    <p>Doorstep collection is consistently rated as the #1 most desired amenity by modern apartment residents.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Boost Net Operating Income</h3>
+                    <p>Our service helps create steady, predictable monthly amenity revenue while improving resident satisfaction.</p>
+                </div>
+            </div>
+            <div class="service-locations">
+                <h4>Our DFW Service Coverage Area:</h4>
+                <div class="location-tags">
+                    <span><i class="fas fa-map-marker-alt"></i> Dallas</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Plano</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Richardson</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Garland</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Frisco</span>
+                    <span><i class="fas fa-map-marker-alt"></i> McKinney</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Property Services</h2>
+                <p>From doorstep trash pickup to bulk removal and property cleaning support, we help communities stay clean and resident-ready.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-trash-alt"></i></div>
+                    <h3>Valet Trash Collection</h3>
+                    <p>Flexible pickup schedules designed to keep hallways clear, sanitary, and professional.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>Doorstep Trash Pickup</h3>
+                    <p>Convenient handling directly from your residents' doors right to the community compactors.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-truck-load"></i></div>
+                    <h3>Bulk Item Removal</h3>
+                    <p>Fast clearance of discarded furniture, mattresses, and appliances left by moving tenants.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-broom"></i></div>
+                    <h3>Apartment Cleaning</h3>
+                    <p>Deep turns and meticulous make-ready cleans to assure fast turnarounds on vacant units.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-spray-can"></i></div>
+                    <h3>Power Washing</h3>
+                    <p>High-pressure washing for breezeways, pool decks, sidewalks, and dumpster enclosures.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-dog"></i></div>
+                    <h3>Pet Waste Station Service</h3>
+                    <p>Regular sanitation, re-stocking of bags, and structural upkeep of pet relief stations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple Introductory Pricing</h2>
+                <p>Affordable pricing designed for apartment communities across Dallas–Fort Worth.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Introductory Offer</div>
+                    <h3>MetroMaid Valet Trash</h3>
+                    <div class="price">$25 <span>/ apartment / month</span></div>
+                    <p class="price-desc">Affordable introductory pricing for apartment communities ready to improve resident convenience and property cleanliness.</p>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Doorstep trash pickup service</li>
+                        <li><i class="fas fa-check"></i> Flexible pickup schedule based on property needs</li>
+                        <li><i class="fas fa-check"></i> Service for Dallas–Fort Worth apartment communities</li>
+                        <li><i class="fas fa-check"></i> Professional communication with property managers</li>
+                        <li><i class="fas fa-check"></i> Custom proposal available for larger communities</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-full">Request a Free Quote</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Custom Property Plan</h3>
+                    <div class="price">Free Bid</div>
+                    <p class="price-desc">For properties that need bulk item removal, pet waste station service, cleaning support, or power washing.</p>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Bulk item removal options</li>
+                        <li><i class="fas fa-check"></i> Pet waste station service options</li>
+                        <li><i class="fas fa-check"></i> Apartment cleaning support</li>
+                        <li><i class="fas fa-check"></i> Power washing options</li>
+                        <li><i class="fas fa-check"></i> Custom pricing by property size</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-full">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <input type="text" name="property" placeholder="Apartment Name" required><br><br>
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Standards In Action</h2>
+                <p>Take a real-world look at how we transform and maintain high-density residential properties.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder"><i class="fas fa-dumpster"></i><span>Clean Breezeway Systems</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder"><i class="fas fa-sparkles"></i><span>Premium Trash Tote Placement</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder"><i class="fas fa-soap"></i><span>Power Washing Before/After</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder"><i class="fas fa-building-circle-check"></i><span>Immaculate Amenity Zones</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <textarea name="message" placeholder="Message" required></textarea><br><br>
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built For DFW Property Managers</h2>
+                <p>MetroMaid is built to support property managers with clean, dependable, resident-friendly service.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"MetroMaid is focused on dependable service, clean breezeways, and strong communication with property managers."</p>
+                    <div class="user-info">
+                        <strong>Property Manager</strong>
+                        <span>DFW Apartment Community</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"A clean property makes a better first impression for residents, prospects, and ownership teams."</p>
+                    <div class="user-info">
+                        <strong>Community Manager</strong>
+                        <span>North Texas Property Team</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button type="submit">Send Request</button>
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about setting up operations with MetroMaid.</p>
+            </div>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>How does valet trash increase our property Net Operating Income (NOI)?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-body">
+                        <p>We bill you a flat rate per door, allowing you to bundle this service as a standard premium amenity for residents. The spread between the cost and the resident structural amenity fee becomes continuous revenue directly increasing your property value.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>What days and times do collection teams operate?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-body">
+                        <p>Our standard schedules run 5 nights a week (typically Sunday through Thursday). Residents put their provided branded totes out between 6:00 PM and 8:00 PM, and our crews finish collection by early morning.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>How do you manage complex layouts or deep walk-up complexes?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-body">
+                        <p>Our operations leaders map out custom routes for every community before launch. We use dynamic software checking to verify that every single doorstep is cleared and documented daily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  </form>
-</section>
-</div>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Request Your Free MetroMaid Property Quote</h2>
+                <p>Tell us about your apartment community and we will prepare a simple, professional service proposal.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <form id="quoteForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" required placeholder="yourname@property.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required placeholder="972-891-5109">
+                        </div>
+                        <div class="form-group">
+                            <label for="community">Community Name / Door Count</label>
+                            <input type="text" id="community" required placeholder="Community name and number of apartments">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Service Needs</label>
+                            <textarea id="message" rows="4" placeholder="Tell us your pickup schedule, door count, and service needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Submit Quote Request</button>
+                    </form>
+                </div>
+                <div class="map-container">
+                    <div class="contact-info-block">
+                        <h4><i class="fas fa-building"></i> MetroMaid</h4>
+                        <p><strong>Manager:</strong> Aweke T</p>
+                        <p>Serving Dallas–Fort Worth Metroplex</p>
+                        <p><i class="fas fa-phone-alt"></i> 972-891-5109</p>
+                        <p><i class="fas fa-envelope"></i> metromaiddfw@gmail.com</p>
+                    </div>
+                    <div class="map-placeholder">
+                        <div class="map-graphic">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Interactive DFW Coverage Map Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="services">
-  <div class="card">
-    <h3>Apartments</h3>
-    <p>Daily doorstep trash pickup for multi-family housing communities.</p>
-  </div>
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Metro<span>Maid</span></h3>
+                <p>Premium apartment valet trash service for Dallas–Fort Worth apartment communities.</p>
+                <p><strong>Manager:</strong> Aweke T</p>
+                <p><strong>Phone:</strong> 972-891-5109</p>
+                <p><strong>Email:</strong> metromaiddfw@gmail.com</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Our DFW Operations</h4>
+                <ul>
+                    <li><a href="#about">Dallas & Plano</a></li>
+                    <li><a href="#about">Frisco & McKinney</a></li>
+                    <li><a href="#about">Richardson & Garland</a></li>
+                    <li><a href="#contact">Schedule Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 MetroMaid LLC. All rights reserved.</p>
+                <p>Premium valet trash service for DFW apartment communities.</p>
+            </div>
+        </div>
+    </footer>
 
-  <div class="card">
-    <h3>Condominiums</h3>
-    <p>Reliable service designed for condo associations and property managers.</p>
-  </div>
-
-  <div class="card">
-    <h3>Townhomes</h3>
-    <p>Flexible trash valet service for residential neighborhoods.</p>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 MetroMaid Valet Service | Dallas–Fort Worth, TX</p>
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
