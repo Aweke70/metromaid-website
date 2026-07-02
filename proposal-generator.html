@@ -1,0 +1,146 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetroMaid AI Proposal Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+
+    header {
+      background: #0f2d4a;
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #0f2d4a;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #16456f;
+    }
+
+    #proposalOutput {
+      margin-top: 30px;
+      background: #f9fafb;
+      padding: 25px;
+      border-left: 5px solid #0f2d4a;
+      white-space: pre-wrap;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MetroMaid AI Proposal Generator</h1>
+  <p>Create professional apartment service proposals in minutes</p>
+</header>
+
+<div class="container">
+  <h2>Generate a Proposal</h2>
+
+  <label>Apartment Community Name</label>
+  <input type="text" id="apartmentName" placeholder="Example: Oak Ridge Apartments">
+
+  <label>Number of Units</label>
+  <input type="number" id="units" placeholder="Example: 250">
+
+  <label>City / Location</label>
+  <input type="text" id="city" placeholder="Example: Plano, TX">
+
+  <label>Property Needs or Situation</label>
+  <textarea id="situation" rows="5" placeholder="Example: Property needs reliable valet trash, better resident service, and fast communication."></textarea>
+
+  <button onclick="generateProposal()">Generate Proposal</button>
+
+  <div id="proposalOutput"></div>
+</div>
+
+<script>
+function generateProposal() {
+  const apartmentName = document.getElementById("apartmentName").value;
+  const units = document.getElementById("units").value;
+  const city = document.getElementById("city").value;
+  const situation = document.getElementById("situation").value;
+
+  const proposal = `
+MetroMaid Valet Trash Service Proposal
+
+Prepared for: ${apartmentName}
+Location: ${city}
+Community Size: ${units} units
+
+Executive Summary
+
+MetroMaid is pleased to present this proposal for professional valet trash service for ${apartmentName}. As a locally owned Dallas-Fort Worth valet trash company, MetroMaid focuses on reliable service, fast communication, and professional support for apartment communities.
+
+Property Situation
+
+${situation}
+
+Recommended Service
+
+MetroMaid recommends a reliable valet trash collection program designed to improve resident convenience, support property cleanliness, and reduce daily trash-related concerns for management.
+
+Why Choose MetroMaid
+
+• Locally owned and operated in the Dallas-Fort Worth area
+• Direct communication with management
+• Professional and dependable service
+• Background-conscious hiring approach
+• Flexible service for apartment communities
+• Introductory pricing available for new properties
+
+Proposed Next Step
+
+We recommend scheduling a short property walk-through to better understand the community layout, pickup areas, service expectations, and resident needs. After the walk-through, MetroMaid can provide a customized pricing and service plan.
+
+Thank you for considering MetroMaid Valet Trash Service.
+`;
+
+  document.getElementById("proposalOutput").innerText = proposal;
+}
+</script>
+
+</body>
+</html>
