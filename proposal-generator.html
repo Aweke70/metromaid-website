@@ -104,6 +104,7 @@ function generateProposal() {
   const situation = document.getElementById("situation").value;
  const pricePerUnit = 25;
 const estimatedMonthly = units * pricePerUnit;
+ const formattedMonthly = estimatedMonthly.toLocaleString();
 
   const proposal = `
 MetroMaid Valet Trash Service Proposal
@@ -111,7 +112,7 @@ MetroMaid Valet Trash Service Proposal
 Prepared for: ${apartmentName}
 Location: ${city}
 Community Size: ${units} units
-Estimated Monthly Contract: $${estimatedMonthly}
+Estimated Monthly Contract: $${formattedMonthly}
 
 Executive Summary
 
