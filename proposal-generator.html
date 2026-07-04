@@ -147,8 +147,20 @@ Thank you for considering MetroMaid Valet Trash Service.
 </script>
  <style>
 @media print {
-  button {
-    display: none;
+  body * {
+    visibility: hidden;
+  }
+
+  #proposalOutput,
+  #proposalOutput * {
+    visibility: visible;
+  }
+
+  #proposalOutput {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 }
 </style>
