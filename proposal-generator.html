@@ -67,10 +67,13 @@
       white-space: pre-wrap;
       border-radius: 8px;
     }
-   @media print {
+  @media print {
   body {
-    font-size: 11.5px;
-   font-weight: 500;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0;
+    padding: 0;
   }
 
   header,
@@ -79,17 +82,38 @@
     display: none !important;
   }
 
+  .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
   #proposalOutput {
-    margin: 0;
-    padding: 0px;
-    border: none;
-   line-height: 1.1;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    line-height: 1.05;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  #proposalOutput p,
+  #proposalOutput li {
+    margin: 2px 0;
+  }
+
+  #proposalOutput h1,
+  #proposalOutput h2,
+  #proposalOutput h3 {
+    margin: 4px 0 3px;
   }
 
   @page {
     size: Letter;
-    margin: 0.15in;
+    margin: 0.1in;
   }
+}
 }
   </style>
 </head>
