@@ -105,6 +105,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Preserve campaign tags on public site links and use them in quote drafts.
+    const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign'];
+    const pageUrl = new URL(window.location.href);
+    const campaign = new URLSearchParams();
+    const cleanSource = (value) => (value || '').replace(/[\r\n]+/g, ' ').trim().slice(0, 120);
+
+    campaignKeys.forEach((key) => {
+        const value = cleanSource(pageUrl.searchParams.get(key));
+        if (value) campaign.set(key, value);
+    });
+
+    const siteRoot = new URL('.', pageUrl);
+    const publicPaths = new Set(
+        ['./', 'index.html', 'valet-trash-service-dfw.html',
+         'valet-trash-plano.html', 'for-property-managers.html']
+            .map((path) => new URL(path, siteRoot).pathname)
+    );
+
+    if (campaign.size) {
+        document.querySelectorAll('a[href]').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) return;
+            const target = new URL(href, pageUrl);
+            if (target.origin !== pageUrl.origin || !publicPaths.has(target.pathname)) return;
+
+            // A destination with explicit campaign tags starts its own attribution.
+            if (campaignKeys.some((key) => target.searchParams.has(key))) return;
+            campaign.forEach((value, key) => target.searchParams.set(key, value));
+            link.href = target.href;
+        });
+    }
+
     // --- Quote Form Email Handler ---
     const quoteForm = document.getElementById('quoteForm');
 
@@ -117,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = document.getElementById('phone')?.value.trim() || '';
             const community = document.getElementById('community')?.value.trim() || 'your apartment community';
             const message = document.getElementById('message')?.value.trim() || '';
+            const reportedSource = cleanSource(document.getElementById('quote-source')?.value);
 
             const subject = encodeURIComponent(`MetroMaid Quote Request - ${community}`);
             const body = encodeURIComponent(
@@ -129,6 +162,10 @@ Email: ${email}
 Phone: ${phone}
 Community / Door Count: ${community}
 Service Needs: ${message}
+How you heard about us: ${reportedSource || 'Not provided'}
+UTM source: ${campaign.get('utm_source') || 'Not provided'}
+UTM medium: ${campaign.get('utm_medium') || 'Not provided'}
+UTM campaign: ${campaign.get('utm_campaign') || 'Not provided'}
 
 Thank you.`
             );
