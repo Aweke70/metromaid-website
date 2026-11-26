@@ -161,13 +161,13 @@ Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Community / Door Count: ${community}
-Service Needs: ${message}
+Service Needs: ${message || 'Not provided'}
 How you heard about us: ${reportedSource || 'Not provided'}
 UTM source: ${campaign.get('utm_source') || 'Not provided'}
 UTM medium: ${campaign.get('utm_medium') || 'Not provided'}
 UTM campaign: ${campaign.get('utm_campaign') || 'Not provided'}
 
-Thank you.`
+Thank you.`.replace(/\r?\n/g, '\r\n')
             );
 
             const submitBtn = quoteForm.querySelector('button[type="submit"]');
