@@ -290,32 +290,33 @@
             </div>
             <div class="contact-grid">
                 <div class="contact-form-container">
-                    <form id="quoteForm" class="contact-form">
+                    <form id="quoteForm" class="contact-form" action="https://formspree.io/f/meebzqvp" method="post">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" required placeholder="Your full name">
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
                         </div>
                         <div class="form-group">
                             <label for="email">Work Email</label>
-                            <input type="email" id="email" required placeholder="yourname@property.com">
+                            <input type="email" id="email" name="email" required placeholder="yourname@property.com">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" required placeholder="972-891-5109">
+                            <input type="tel" id="phone" name="phone" required placeholder="972-891-5109">
                         </div>
                         <div class="form-group">
                             <label for="community">Community Name / Door Count</label>
-                            <input type="text" id="community" required placeholder="Community name and number of apartments">
+                            <input type="text" id="community" name="community" required placeholder="Community name and number of apartments">
                         </div>
                         <div class="form-group">
                             <label for="message">Service Needs</label>
-                            <textarea id="message" rows="4" placeholder="Tell us your pickup schedule, door count, and service needs..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us your pickup schedule, door count, and service needs..."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="quote-source">How did you hear about us? (optional)</label>
                             <input type="text" id="quote-source" name="quote-source" maxlength="120">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Open Quote Request Email</button>
+                        <button type="submit" class="btn btn-primary btn-full">Send Quote Request</button>
+                        <p id="quote-status" role="status"></p>
                     </form>
                 </div>
                 <div class="map-container">

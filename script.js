@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Preserve campaign tags on public site links and use them in quote drafts.
+    // Preserve campaign tags on public site links and include them in quote requests.
     const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign'];
     const pageUrl = new URL(window.location.href);
     const campaign = new URLSearchParams();
@@ -137,91 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Quote Form Email Handler ---
     const quoteForm = document.getElementById('quoteForm');
 
     if (quoteForm) {
-        const prepareQuote = () => {
-            const name = document.getElementById('name')?.value.trim() || 'there';
-            const email = document.getElementById('email')?.value.trim() || '';
-            const phone = document.getElementById('phone')?.value.trim() || '';
-            const community = document.getElementById('community')?.value.trim() || 'your apartment community';
-            const message = document.getElementById('message')?.value.trim() || '';
-            const reportedSource = cleanSource(document.getElementById('quote-source')?.value);
+        const button = quoteForm.querySelector('button[type="submit"]');
+        const status = document.getElementById('quote-status');
 
-            const subject = `MetroMaid Quote Request - ${community}`;
-            const body =
-`Hello MetroMaid,
-
-I would like to request a free quote.
-
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Community / Door Count: ${community}
-Service Needs: ${message || 'Not provided'}
-How you heard about us: ${reportedSource || 'Not provided'}
-UTM source: ${campaign.get('utm_source') || 'Not provided'}
-UTM medium: ${campaign.get('utm_medium') || 'Not provided'}
-UTM campaign: ${campaign.get('utm_campaign') || 'Not provided'}
-
-Thank you.`;
-            return { name, subject, body };
-        };
-
-        const copyQuote = document.createElement('button');
-        copyQuote.type = 'button';
-        copyQuote.className = 'btn btn-secondary btn-full';
-        copyQuote.textContent = 'Copy Formatted Quote';
-        const copyStatus = document.createElement('p');
-        copyStatus.setAttribute('role', 'status');
-        const quoteText = document.createElement('textarea');
-        quoteText.readOnly = true;
-        quoteText.rows = 12;
-        quoteText.style.width = '100%';
-        quoteText.hidden = true;
-        quoteText.setAttribute('aria-label', 'Formatted quote message');
-        quoteForm.append(copyQuote, copyStatus, quoteText);
-
-        copyQuote.addEventListener('click', async () => {
-            if (!quoteForm.reportValidity()) return;
-            const { body } = prepareQuote();
-            quoteText.hidden = true;
-            try {
-                await navigator.clipboard.writeText(body);
-                copyStatus.textContent = 'Copied. Tap Open Quote Request Email, then replace the draft body with the copied text.';
-            } catch {
-                quoteText.value = body;
-                quoteText.hidden = false;
-                quoteText.focus();
-                quoteText.select();
-                copyStatus.textContent = 'Copy the selected text, then paste it over the draft body.';
-            }
-        });
-
-        quoteForm.addEventListener('submit', (event) => {
+        quoteForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const { name, subject, body } = prepareQuote();
-            const encodedSubject = encodeURIComponent(subject);
-            const encodedBody = encodeURIComponent(body.replace(/\r?\n/g, '\r\n'));
-            const submitBtn = quoteForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn ? submitBtn.textContent : 'Submit Quote Request';
+            if (button.disabled) return;
 
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Opening Email...';
+            const data = new FormData(quoteForm);
+            campaign.forEach((value, key) => data.set(key, value));
+
+            button.disabled = true;
+            status.textContent = 'Sending your request…';
+
+            try {
+                const response = await fetch(quoteForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { Accept: 'application/json' }
+                });
+                if (!response.ok) throw new Error('Quote request failed');
+
+                quoteForm.reset();
+                status.textContent = 'Thank you. Your quote request was sent.';
+            } catch {
+                status.textContent = 'We could not confirm your request. Please try again or call 972-891-5109.';
+            } finally {
+                button.disabled = false;
             }
-
-            setTimeout(() => {
-                window.location.href = `mailto:metromaiddfw@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
-
-                alert(`Thank you, ${name}! Your quote request is ready. Please send the email that opens next.`);
-
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                }
-            }, 600);
         });
     }
 });
