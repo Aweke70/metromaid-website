@@ -141,9 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteForm = document.getElementById('quoteForm');
 
     if (quoteForm) {
-        quoteForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-
+        const prepareQuote = () => {
             const name = document.getElementById('name')?.value.trim() || 'there';
             const email = document.getElementById('email')?.value.trim() || '';
             const phone = document.getElementById('phone')?.value.trim() || '';
@@ -151,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message')?.value.trim() || '';
             const reportedSource = cleanSource(document.getElementById('quote-source')?.value);
 
-            const subject = encodeURIComponent(`MetroMaid Quote Request - ${community}`);
-            const body = encodeURIComponent(
+            const subject = `MetroMaid Quote Request - ${community}`;
+            const body =
 `Hello MetroMaid,
 
 I would like to request a free quote.
@@ -167,9 +165,45 @@ UTM source: ${campaign.get('utm_source') || 'Not provided'}
 UTM medium: ${campaign.get('utm_medium') || 'Not provided'}
 UTM campaign: ${campaign.get('utm_campaign') || 'Not provided'}
 
-Thank you.`.replace(/\r?\n/g, '\r\n')
-            );
+Thank you.`;
+            return { name, subject, body };
+        };
 
+        const copyQuote = document.createElement('button');
+        copyQuote.type = 'button';
+        copyQuote.className = 'btn btn-secondary btn-full';
+        copyQuote.textContent = 'Copy Formatted Quote';
+        const copyStatus = document.createElement('p');
+        copyStatus.setAttribute('role', 'status');
+        const quoteText = document.createElement('textarea');
+        quoteText.readOnly = true;
+        quoteText.rows = 12;
+        quoteText.style.width = '100%';
+        quoteText.hidden = true;
+        quoteText.setAttribute('aria-label', 'Formatted quote message');
+        quoteForm.append(copyQuote, copyStatus, quoteText);
+
+        copyQuote.addEventListener('click', async () => {
+            if (!quoteForm.reportValidity()) return;
+            const { body } = prepareQuote();
+            quoteText.hidden = true;
+            try {
+                await navigator.clipboard.writeText(body);
+                copyStatus.textContent = 'Copied. Tap Open Quote Request Email, then replace the draft body with the copied text.';
+            } catch {
+                quoteText.value = body;
+                quoteText.hidden = false;
+                quoteText.focus();
+                quoteText.select();
+                copyStatus.textContent = 'Copy the selected text, then paste it over the draft body.';
+            }
+        });
+
+        quoteForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const { name, subject, body } = prepareQuote();
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body.replace(/\r?\n/g, '\r\n'));
             const submitBtn = quoteForm.querySelector('button[type="submit"]');
             const originalText = submitBtn ? submitBtn.textContent : 'Submit Quote Request';
 
@@ -179,7 +213,7 @@ Thank you.`.replace(/\r?\n/g, '\r\n')
             }
 
             setTimeout(() => {
-                window.location.href = `mailto:metromaiddfw@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = `mailto:metromaiddfw@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
 
                 alert(`Thank you, ${name}! Your quote request is ready. Please send the email that opens next.`);
 
